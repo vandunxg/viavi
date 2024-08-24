@@ -10,8 +10,6 @@ import java.io.Serializable;
 @Getter
 @Setter
 @Entity(name = "permission")
-public class Permission implements Serializable {
-
-
+public class Permission extends AbstractEntity<String> implements Serializable {
 
 }
