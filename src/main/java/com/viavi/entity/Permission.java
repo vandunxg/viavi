@@ -12,4 +12,5 @@ import java.io.Serializable;
 @Entity(name = "permission")
 public class Permission extends AbstractEntity<String> implements Serializable {
 
+
 }
