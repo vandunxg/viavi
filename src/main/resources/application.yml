@@ -16,8 +16,11 @@ spring:
       max-file-size: 2MB
       max-request-size: 2MB
 jwt:
-  private-key: BaiEV+aB+DM7YqtOadi84CSEuQsHnlrb4/4qpkycEu4=
-  expiration: 2592000 #30 days = 30 * 24 * 60 * 60
-
+  private-key:
+    access-token: wEDQwy9tMp0YM7Lo3CtgEaXTBUI15xbZaVf3HoEfDUx6fn2iCa98STvvjZw1W1Mg
+    refresh-token: axCspR9wzE2lsX1dbKflWaRF9Ik6HkYghaxcJUfWhNH49CprgCDab/2tErWprevz
+  expiration:
+    access-token: 86400 # 1day = 1 * 24 * 60 * 60
+    refresh-token: 2592000 #30 days = 30 * 24 * 60 * 60
 
 
