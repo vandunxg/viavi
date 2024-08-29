@@ -23,13 +23,13 @@ import java.util.function.Function;
 @Slf4j
 public class JwtToken {
 
-    @Value("${jwt.private-key}")
     @NonFinal
-    String SECRET_KEY;
+    @Value("${jwt.private-key.access-token}")
+    String ACCESS_TOKEN_KEY;
 
-    @Value("${jwt.expiration}")
+    @Value("${jwt.expiration.access-token}")
     @NonFinal
-    Long EXPIRATION_TIME;
+    Long EXPIRATION_ACCESS_TOKEN;
 
     public String generateAccessToken(User currentUser) {
 
@@ -38,7 +38,7 @@ public class JwtToken {
         JWTClaimsSet claimsSet = new JWTClaimsSet.Builder()
                 .subject(currentUser.getEmail())
                 .issuer("localhost:8080")
-                .expirationTime(new Date(System.currentTimeMillis() + 1000 * 60 * 5))
+                .expirationTime(new Date(System.currentTimeMillis() + 1000 * EXPIRATION_ACCESS_TOKEN))
                 .issueTime(new Date())
                 .claim("ROLE", "ABC")
                 .build();
@@ -48,7 +48,7 @@ public class JwtToken {
         JWSObject jwsObject = new JWSObject(jwsHeader, payload);
 
         try {
-            jwsObject.sign(new MACSigner(SECRET_KEY.getBytes()));
+            jwsObject.sign(new MACSigner(ACCESS_TOKEN_KEY.getBytes()));
             return jwsObject.serialize();
         } catch (Exception exception) {
             log.error(exception.getMessage());
@@ -72,7 +72,7 @@ public class JwtToken {
 
     Claims extractAllClaims(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(SECRET_KEY.getBytes())
+                .setSigningKey(ACCESS_TOKEN_KEY.getBytes())
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
