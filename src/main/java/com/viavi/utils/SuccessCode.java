@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 @FieldDefaults(makeFinal = true)
 public enum SuccessCode {
 
-    SUCCESS_REGISTER("SCC1", SuccessStringConstant.REGISTER_SUCCESS_MASSAGE, HttpStatus.OK);
+    SUCCESS_REGISTER("SCC1", SuccessStringConstant.REGISTER_SUCCESS_MASSAGE, HttpStatus.OK),
+    SUCCESS_ADD("SCC2", SuccessStringConstant.ADD_SUCCESS_MASSAGE, HttpStatus.OK)
+    ;
 
     String code;
     String message;
