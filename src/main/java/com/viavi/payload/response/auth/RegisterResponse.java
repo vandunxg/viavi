@@ -7,18 +7,12 @@ import lombok.experimental.FieldDefaults;
 
 @Setter
 @Getter
-@Builder
+@NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class RegisterResponse extends SuccessResponse {
 
     public RegisterResponse(SuccessCode successCode){
         super(successCode);
     }
-
-    public RegisterResponse(){
-        super();
-
-    }
-
 
 }
