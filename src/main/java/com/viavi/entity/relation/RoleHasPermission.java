@@ -3,7 +3,6 @@ package com.viavi.entity.relation;
 import com.viavi.entity.AbstractEntity;
 import com.viavi.entity.Permission;
 import com.viavi.entity.Role;
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
