@@ -8,15 +8,16 @@ import java.time.LocalDateTime;
 
 @Setter
 @Getter
+@AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PROTECTED)
 public class SuccessResponse {
 
     String code;
     String message;
-    LocalDateTime issueAt = LocalDateTime.now();
+    final LocalDateTime issueAt = LocalDateTime.now();
 
-    protected SuccessResponse(SuccessCode successCode) {
+    public SuccessResponse(SuccessCode successCode) {
         this.code = successCode.getCode();
         this.message = successCode.getMessage();
     }
