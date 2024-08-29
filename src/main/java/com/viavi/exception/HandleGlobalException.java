@@ -25,4 +25,20 @@ public class HandleGlobalException {
 
     }
 
+    @ExceptionHandler(value = {PermissionException.class})
+    ResponseEntity<ErrorResponse> handlePermissionException(PermissionException exception) {
+
+        ErrorCode errorCode = exception.getErrorCode();
+
+        return ResponseEntity
+                .status(errorCode.getHttpStatus())
+                .body(
+                        ErrorResponse.builder()
+                                .code(errorCode.getCode())
+                                .message(errorCode.getMessage())
+                                .build()
+                );
+
+    }
+
 }
