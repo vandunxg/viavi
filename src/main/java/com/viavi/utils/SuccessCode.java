@@ -10,7 +10,8 @@ import org.springframework.http.HttpStatus;
 public enum SuccessCode {
 
     SUCCESS_REGISTER("SCC1", SuccessStringConstant.REGISTER_SUCCESS_MASSAGE, HttpStatus.OK),
-    SUCCESS_ADD("SCC2", SuccessStringConstant.ADD_SUCCESS_MASSAGE, HttpStatus.OK)
+    SUCCESS_ADD("SCC2", SuccessStringConstant.ADD_SUCCESS_MASSAGE, HttpStatus.OK),
+    SUCCESS_UPDATE("SCC3", SuccessStringConstant.UPDATE_SUCCESS_MESSAGE, HttpStatus.OK)
     ;
 
     String code;
