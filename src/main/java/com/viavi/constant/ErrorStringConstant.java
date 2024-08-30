@@ -14,4 +14,10 @@ public class ErrorStringConstant {
     public static final String PERMISSION_EXISTED_ERROR_MASSAGE
             = "Permission existed.";
 
+    public static final String PERMISSION_NOT_EXISTED_ERROR_MASSAGE
+            = "Permission not existed.";
+
+    public static final String ROLE_EXISTED_ERROR_MASSAGE
+            = "Role existed.";
+
 }

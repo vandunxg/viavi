@@ -8,5 +8,6 @@ public class EndpointConstant {
 
     // CRUD
     public static final String ENDPOINT_ADD = "/add";
+    public static final String ENDPOINT_UPDATE_DESCRIPTION = "/update/description";
 
 }

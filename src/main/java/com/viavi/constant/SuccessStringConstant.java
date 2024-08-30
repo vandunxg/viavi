@@ -8,4 +8,7 @@ public class SuccessStringConstant {
     public static final String ADD_SUCCESS_MASSAGE
             = "Add successfully.";
 
+    public static final String UPDATE_SUCCESS_MESSAGE
+            = "Update successfully.";
+
 }
