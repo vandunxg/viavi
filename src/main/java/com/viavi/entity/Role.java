@@ -1,9 +1,8 @@
 package com.viavi.entity;
 
 import com.viavi.entity.relation.RoleHasPermission;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
+import com.viavi.entity.relation.UserHasRole;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,7 +25,12 @@ public class Role extends AbstractEntity<Integer> implements Serializable {
     @Column(name = "description")
     String description;
 
-    @OneToMany(mappedBy = "role")
-    Set<RoleHasPermission> roleHasPermissions = new HashSet<>();
+    @ManyToMany
+    @JoinTable(
+            name = "role_has_permission",
+            joinColumns = @JoinColumn(name = "role_id"),
+            inverseJoinColumns = @JoinColumn(name = "permission_id")
+    )
+    Set<Permission> permissions = new HashSet<>();
 
 }

@@ -32,10 +32,25 @@ public class PermissionServiceImp implements PermissionService {
 
         Permission newPermission = PermissionMapper.INSTANCE.toPermission(request);
 
-        log.info("\n------------------------------SAVE PERMISSION---------------");
+        log.info("\n------------------------------SAVE PERMISSION---------------\n");
         permissionRepository.save(newPermission);
 
         return new SuccessResponse(SuccessCode.SUCCESS_ADD);
+
+    }
+
+    @Override
+    public SuccessResponse updatePermissionDescription(PermissionRequest request) {
+
+        var permission = permissionRepository.findByName(request.getName())
+                .orElseThrow(() -> new PermissionException(ErrorCode.ERROR_PERMISSION_NOT_EXIST));
+
+        PermissionMapper.INSTANCE.updatePermission(permission, request);
+
+        log.info("\n------------------------------UPDATE PERMISSION---------------\n");
+        permissionRepository.save(permission);
+
+        return new SuccessResponse(SuccessCode.SUCCESS_UPDATE);
 
     }
 

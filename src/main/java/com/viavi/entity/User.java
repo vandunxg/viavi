@@ -1,17 +1,18 @@
 package com.viavi.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
+import com.viavi.entity.relation.UserHasRole;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.FieldDefaults;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Data
 @Entity(name = "user")
@@ -43,9 +44,21 @@ public class User extends AbstractEntity<Long> implements Serializable, UserDeta
     @Column(name = "is_deleted")
     boolean isDeleted;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_has_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    Set<Role> roles = new HashSet<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+
+        return roles.stream().map(
+                x -> new SimpleGrantedAuthority(x.getName())
+        ).collect(Collectors.toList());
+
     }
 
     @Override

@@ -24,7 +24,4 @@ public class Permission extends AbstractEntity<Integer> implements Serializable 
     @Column(name = "description")
     String description;
 
-    @OneToMany(mappedBy = "permission")
-    Set<RoleHasPermission> roleHasPermissions = new HashSet<>();
-
 }
