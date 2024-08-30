@@ -5,14 +5,14 @@ import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
-@Builder
 @AllArgsConstructor
-@NoArgsConstructor
 @MappedSuperclass
 @FieldDefaults(level = AccessLevel.PROTECTED)
-public class GlobalException extends RuntimeException {
+public abstract class GlobalException extends RuntimeException {
 
     ErrorCode errorCode;
 

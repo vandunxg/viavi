@@ -2,9 +2,9 @@ package com.viavi.exception;
 
 import com.viavi.utils.ErrorCode;
 
-public class AuthException extends GlobalException{
+public class RoleException extends GlobalException {
 
-    public AuthException(ErrorCode errorCode){
+    public RoleException(ErrorCode errorCode) {
         super(errorCode);
     }
 
